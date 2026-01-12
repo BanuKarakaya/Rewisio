@@ -6,8 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B1B074842F150DD000BD54F3 /* ArticleShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1B074822F150DD000BD54F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B072132F0AE91900BD54F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B074792F150DD000BD54F3;
+			remoteInfo = ArticleShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1B073722F0FD12500BD54F3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B1B074842F150DD000BD54F3 /* ArticleShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B1B0721B2F0AE91900BD54F3 /* Rewisio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewisio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ArticleShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -17,6 +46,13 @@
 				Info.plist,
 			);
 			target = B1B0721A2F0AE91900BD54F3 /* Rewisio */;
+		};
+		B1B074882F150DD000BD54F3 /* Exceptions for "ArticleShareExtension" folder in "ArticleShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B1B074792F150DD000BD54F3 /* ArticleShareExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -29,10 +65,25 @@
 			path = Rewisio;
 			sourceTree = "<group>";
 		};
+		B1B0747B2F150DD000BD54F3 /* ArticleShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B1B074882F150DD000BD54F3 /* Exceptions for "ArticleShareExtension" folder in "ArticleShareExtension" target */,
+			);
+			path = ArticleShareExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B1B072182F0AE91900BD54F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B074772F150DD000BD54F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B0721D2F0AE91900BD54F3 /* Rewisio */,
+				B1B0747B2F150DD000BD54F3 /* ArticleShareExtension */,
 				B1B0721C2F0AE91900BD54F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B0721B2F0AE91900BD54F3 /* Rewisio.app */,
+				B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,10 +121,12 @@
 				B1B072172F0AE91900BD54F3 /* Sources */,
 				B1B072182F0AE91900BD54F3 /* Frameworks */,
 				B1B072192F0AE91900BD54F3 /* Resources */,
+				B1B073722F0FD12500BD54F3 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B1B074832F150DD000BD54F3 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B1B0721D2F0AE91900BD54F3 /* Rewisio */,
@@ -82,6 +137,28 @@
 			productName = Rewisio;
 			productReference = B1B0721B2F0AE91900BD54F3 /* Rewisio.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B1B074792F150DD000BD54F3 /* ArticleShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B074872F150DD000BD54F3 /* Build configuration list for PBXNativeTarget "ArticleShareExtension" */;
+			buildPhases = (
+				B1B074762F150DD000BD54F3 /* Sources */,
+				B1B074772F150DD000BD54F3 /* Frameworks */,
+				B1B074782F150DD000BD54F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B1B0747B2F150DD000BD54F3 /* ArticleShareExtension */,
+			);
+			name = ArticleShareExtension;
+			packageProductDependencies = (
+			);
+			productName = ArticleShareExtension;
+			productReference = B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -94,6 +171,9 @@
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					B1B0721A2F0AE91900BD54F3 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					B1B074792F150DD000BD54F3 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -113,12 +193,20 @@
 			projectRoot = "";
 			targets = (
 				B1B0721A2F0AE91900BD54F3 /* Rewisio */,
+				B1B074792F150DD000BD54F3 /* ArticleShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B1B072192F0AE91900BD54F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B074782F150DD000BD54F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +223,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1B074762F150DD000BD54F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1B074832F150DD000BD54F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B074792F150DD000BD54F3 /* ArticleShareExtension */;
+			targetProxy = B1B074822F150DD000BD54F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B1B0722F2F0AE91B00BD54F3 /* Debug */ = {
@@ -143,6 +246,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rewisio/Rewisio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5Y9WBD7WV;
@@ -171,6 +275,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rewisio/Rewisio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5Y9WBD7WV;
@@ -315,6 +420,58 @@
 			};
 			name = Release;
 		};
+		B1B074852F150DD000BD54F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ArticleShareExtension/ArticleShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5Y9WBD7WV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArticleShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArticleShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banu.Rewisio.ArticleShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1B074862F150DD000BD54F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ArticleShareExtension/ArticleShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5Y9WBD7WV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArticleShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArticleShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banu.Rewisio.ArticleShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -332,6 +489,15 @@
 			buildConfigurations = (
 				B1B0722F2F0AE91B00BD54F3 /* Debug */,
 				B1B072302F0AE91B00BD54F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B074872F150DD000BD54F3 /* Build configuration list for PBXNativeTarget "ArticleShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B074852F150DD000BD54F3 /* Debug */,
+				B1B074862F150DD000BD54F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
