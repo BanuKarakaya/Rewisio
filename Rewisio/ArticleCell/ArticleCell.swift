@@ -11,13 +11,18 @@ final class ArticleCell: UICollectionViewCell {
 
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var mainView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.borderWidth = 1
         self.layer.cornerRadius = 16
         articleImage.layer.cornerRadius = 16
         buttonView.layer.cornerRadius = 25
-        self.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
+        mainView.layer.cornerRadius = 16
+        mainView.layer.shadowColor = UIColor.black.cgColor
+        mainView.layer.shadowOpacity = 0.15
+        mainView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        mainView.layer.shadowRadius = 8
+        self.clipsToBounds = false
     }
 }

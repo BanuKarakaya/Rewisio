@@ -19,11 +19,28 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var articleCollectionView: UICollectionView!
     @IBOutlet weak var articleCollectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var quizCardTitle: UILabel!
+    @IBOutlet weak var quizCardSubTitle: UILabel!
+    @IBOutlet weak var quizCardView: UIView!
+    @IBOutlet weak var quizCardImage: UIImageView!
+    
+    enum CardState {
+        case ganeratorQuiz
+        case startQuiz
+    }
+    
+    private var cardState: CardState = .ganeratorQuiz
     private lazy var viewModel: HomeViewModelProtocol = HomeViewModel(delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults(suiteName: "group.com.banu.rewisio")
+        print(defaults?.string(forKey: "sharedURL") ?? "banu")
         viewModel.viewDidLoad()
+    }
+    
+    @IBAction func StartTestButtonTapped(_ sender: Any) {
+        viewModel.updateCardActions()
     }
 }
 
@@ -33,11 +50,11 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeCell(cellType: ArticleCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeCell(cellType: AddArticleCell.self, indexPath: indexPath)
         return cell
     }
     
@@ -45,15 +62,38 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 345, height: 85)
+        .init(width: 345, height: 410)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        .init(top: 0, left: 0, bottom: 0, right: 0)
+        .init(top: 20, left: 0, bottom: 20, right: 0)
     }
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    func updateCardUI() {
+        switch cardState {
+            
+        case .ganeratorQuiz:
+            cardState = .startQuiz
+            quizCardView.backgroundColor = UIColor.systemPurple
+            quizCardTitle.text = "Data Science Quiz"
+            quizCardSubTitle.text = "15 Questions"
+            startTestButton.setTitle("Start Test", for: .normal)
+            startTestButton.isEnabled = true
+        case .startQuiz:
+            cardState = .ganeratorQuiz
+            let quizView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QuizViewController")
+            navigationController?.pushViewController(quizView, animated: true)
+            quizCardView.backgroundColor = UIColor.systemOrange
+            quizCardTitle.text = "AI Quiz Generator"
+            quizCardSubTitle.text = "From your saved articles"
+            startTestButton.setTitle("Generate Quiz", for: .normal)
+            startTestButton.isEnabled = true
+            
+        }
+    }
+    
     func prepareUI() {
         articleCollectionView.isScrollEnabled = false
         startTestButton.layer.cornerRadius = 16
@@ -63,12 +103,14 @@ extension HomeViewController: HomeViewModelDelegate {
         testPassedView.layer.cornerRadius = 16
         testPassedImage.layer.cornerRadius = 16
         articleSavedImage.layer.cornerRadius = 16
-        articleCollectionViewHeight.constant = CGFloat((viewModel.articleCount) * 85)
+        articleCollectionViewHeight.constant = 450
+        //CGFloat((viewModel.articleCount) * 85)
     }
     
     func prepareCollectionView() {
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         articleCollectionView.register(cellType: ArticleCell.self)
+        articleCollectionView.register(cellType: AddArticleCell.self)
     }
 }

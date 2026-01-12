@@ -52,3 +52,13 @@ extension ArticlesViewController: UICollectionViewDelegate {
     
 }
 
+extension ArticlesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 00 {
+            .init(top: 0, left: 0, bottom: 0, right: 0)
+        } else {
+            .init(top: 20, left: 16.5, bottom: 20, right: 16.5)
+        }
+    }
+}
+

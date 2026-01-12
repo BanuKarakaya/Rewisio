@@ -10,11 +10,13 @@ import Foundation
 protocol HomeViewModelProtocol {
     var articleCount: Int { get }
     func viewDidLoad()
+    func updateCardActions()
 }
 
 protocol HomeViewModelDelegate: AnyObject {
     func prepareCollectionView()
     func prepareUI()
+    func updateCardUI()
 }
 
 final class HomeViewModel {
@@ -27,6 +29,10 @@ final class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
+    func updateCardActions() {
+        delegate?.updateCardUI()
+    }
+    
     var articleCount: Int {
         articles.count
     }

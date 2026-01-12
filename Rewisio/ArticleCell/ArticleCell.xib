@@ -84,6 +84,7 @@
             <connections>
                 <outlet property="articleImage" destination="1aM-JQ-D4Z" id="ovd-G1-XSV"/>
                 <outlet property="buttonView" destination="Rij-48-ndP" id="07F-Ec-tVt"/>
+                <outlet property="mainView" destination="XkR-tC-9ap" id="NxX-9J-7Jw"/>
             </connections>
             <point key="canvasLocation" x="215.26717557251908" y="38.380281690140848"/>
         </collectionViewCell>
