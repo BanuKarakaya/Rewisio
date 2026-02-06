@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedCore
 
 final class HomeViewController: UIViewController {
 

@@ -8,6 +8,7 @@
 import UIKit
 import Social
 import UniformTypeIdentifiers
+import SharedCore
 
 final class ShareViewController: SLComposeServiceViewController {
     

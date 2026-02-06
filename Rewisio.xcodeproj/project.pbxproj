@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B14766B22F361A9E008639CB /* SharedCore in Frameworks */ = {isa = PBXBuildFile; productRef = B14766B12F361A9E008639CB /* SharedCore */; };
+		B14766B42F361B04008639CB /* SharedCore in Frameworks */ = {isa = PBXBuildFile; productRef = B14766B32F361B04008639CB /* SharedCore */; };
 		B1B074842F150DD000BD54F3 /* ArticleShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B14766AF2F36166C008639CB /* SharedCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedCore; sourceTree = "<group>"; };
 		B1B0721B2F0AE91900BD54F3 /* Rewisio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewisio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ArticleShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14766B22F361A9E008639CB /* SharedCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,17 +91,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14766B42F361B04008639CB /* SharedCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B14766B02F361A9E008639CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B1B072122F0AE91900BD54F3 = {
 			isa = PBXGroup;
 			children = (
+				B14766AF2F36166C008639CB /* SharedCore */,
 				B1B0721D2F0AE91900BD54F3 /* Rewisio */,
 				B1B0747B2F150DD000BD54F3 /* ArticleShareExtension */,
+				B14766B02F361A9E008639CB /* Frameworks */,
 				B1B0721C2F0AE91900BD54F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +147,7 @@
 			);
 			name = Rewisio;
 			packageProductDependencies = (
+				B14766B12F361A9E008639CB /* SharedCore */,
 			);
 			productName = Rewisio;
 			productReference = B1B0721B2F0AE91900BD54F3 /* Rewisio.app */;
@@ -155,6 +170,7 @@
 			);
 			name = ArticleShareExtension;
 			packageProductDependencies = (
+				B14766B32F361B04008639CB /* SharedCore */,
 			);
 			productName = ArticleShareExtension;
 			productReference = B1B0747A2F150DD000BD54F3 /* ArticleShareExtension.appex */;
@@ -503,6 +519,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B14766B12F361A9E008639CB /* SharedCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedCore;
+		};
+		B14766B32F361B04008639CB /* SharedCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B1B072132F0AE91900BD54F3 /* Project object */;
 }
