@@ -6,29 +6,51 @@
 //
 
 import Foundation
+import SharedCore
+import CoreData
 
 protocol HomeViewModelProtocol {
     var articleCount: Int { get }
     func viewDidLoad()
     func updateCardActions()
+    func articleAtIndex(index: Int) -> ArticlesDemoEntity
 }
 
 protocol HomeViewModelDelegate: AnyObject {
     func prepareCollectionView()
     func prepareUI()
     func updateCardUI()
+    func reloadData()
 }
 
 final class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
-    private var articles = ["banu", "latif", "atçı", "a", "k", "l", "d"]
+    private var articles: [ArticlesDemoEntity] = []
     
     init(delegate: HomeViewModelDelegate?) {
         self.delegate = delegate
     }
+    
+    func fetchArticles() {
+        let context = CoreDataStack.shared.context
+        let fetchRequest: NSFetchRequest<ArticlesDemoEntity> = ArticlesDemoEntity.fetchRequest()
+        
+        do {
+            articles = try context.fetch(fetchRequest)
+            print(articles)
+        } catch {
+            print("Failed to fetch diaries: \(error)")
+        }
+        delegate?.reloadData()
+    }
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
+    func articleAtIndex(index: Int) -> SharedCore.ArticlesDemoEntity {
+        let article = articles[index]
+        return article
+    }
+    
     func updateCardActions() {
         delegate?.updateCardUI()
     }
@@ -39,6 +61,8 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func viewDidLoad() {
         delegate?.prepareCollectionView()
+        fetchArticles()
         delegate?.prepareUI()
+        
     }
 }

@@ -11,17 +11,12 @@ final class ArticlesViewController: UIViewController {
 
     @IBOutlet weak var articlesCollectionView: UICollectionView!
     
+    private lazy var viewModel: ArticlesViewModelProtocol = ArticlesViewModel(delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        articlesCollectionView.dataSource = self
-        articlesCollectionView.delegate = self
-        articlesCollectionView.register(cellType: ArticleCell.self)
-        articlesCollectionView.register(cellType: DateCell.self)
+        viewModel.viewDidLoad()
     }
-    
-
 }
 
 extension ArticlesViewController: UICollectionViewDataSource {
@@ -33,7 +28,7 @@ extension ArticlesViewController: UICollectionViewDataSource {
         if section == 0 {
             1
         } else {
-            7
+            viewModel.articleCount
         }
     }
     
@@ -43,6 +38,9 @@ extension ArticlesViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeCell(cellType: ArticleCell.self, indexPath: indexPath)
+            let article = viewModel.articlesAtIndex(index: indexPath.item)
+            let cellViewModel = ArticleCellViewModel(delegate: cell, article: article)
+            cell.viewModel = cellViewModel
             return cell
         }
     }
@@ -62,3 +60,19 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension ArticlesViewController: ArticlesViewModelDelegate {
+    func prepareUI() {
+        print("banu")
+    }
+    
+    func prepareCollectionView() {
+        articlesCollectionView.dataSource = self
+        articlesCollectionView.delegate = self
+        articlesCollectionView.register(cellType: ArticleCell.self)
+        articlesCollectionView.register(cellType: DateCell.self)
+    }
+    
+    func reloadData() {
+        articlesCollectionView.reloadData()
+    }
+}

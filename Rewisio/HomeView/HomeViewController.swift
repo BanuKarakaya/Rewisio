@@ -19,11 +19,11 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var articleSavedImage: UIImageView!
     @IBOutlet weak var articleCollectionView: UICollectionView!
     @IBOutlet weak var articleCollectionViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var quizCardTitle: UILabel!
     @IBOutlet weak var quizCardSubTitle: UILabel!
     @IBOutlet weak var quizCardView: UIView!
     @IBOutlet weak var quizCardImage: UIImageView!
+    @IBOutlet weak var articleSavedCount: UILabel!
     
     enum CardState {
         case ganeratorQuiz
@@ -51,14 +51,16 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        viewModel.articleCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeCell(cellType: AddArticleCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeCell(cellType: ArticleCell.self, indexPath: indexPath)
+        let article = viewModel.articleAtIndex(index: indexPath.item)
+        let cellViewModel = ArticleCellViewModel(delegate: cell, article: article)
+        cell.viewModel = cellViewModel
         return cell
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
@@ -72,6 +74,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    func reloadData() {
+        articleCollectionView.reloadData()
+    }
+    
     func updateCardUI() {
         switch cardState {
             
@@ -104,8 +110,9 @@ extension HomeViewController: HomeViewModelDelegate {
         testPassedView.layer.cornerRadius = 16
         testPassedImage.layer.cornerRadius = 16
         articleSavedImage.layer.cornerRadius = 16
-        articleCollectionViewHeight.constant = 450
-        //CGFloat((viewModel.articleCount) * 85)
+        articleSavedCount.text = "\(viewModel.articleCount)"
+        articleCollectionViewHeight.constant = CGFloat((viewModel.articleCount) * 115)
+        
     }
     
     func prepareCollectionView() {

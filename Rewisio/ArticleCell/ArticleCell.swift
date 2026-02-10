@@ -6,18 +6,33 @@
 //
 
 import UIKit
+import SharedCore
 
 final class ArticleCell: UICollectionViewCell {
 
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var articleTitle: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    var viewModel: ArticleCellViewModelProtocol! {
+        didSet {
+            viewModel.awakeFromNib()
+            viewModel.load()
+        }
+    }
+}
+
+extension ArticleCell: ArticleCellViewModelDelegate {
+    func configureUI(article: SharedCore.ArticlesDemoEntity) {
+        articleTitle.text = article.articleName
+    }
+    
+    func prepareUI() {
         self.layer.cornerRadius = 16
         articleImage.layer.cornerRadius = 16
-        buttonView.layer.cornerRadius = 25
+        buttonView.layer.cornerRadius = 16
         mainView.layer.cornerRadius = 16
         mainView.layer.shadowColor = UIColor.black.cgColor
         mainView.layer.shadowOpacity = 0.15
