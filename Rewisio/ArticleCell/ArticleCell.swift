@@ -15,7 +15,10 @@ final class ArticleCell: UICollectionViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var articleTitle: UILabel!
     
-    
+    @IBAction func articleCellButton(_ sender: Any) {
+        
+    }
+   
     var viewModel: ArticleCellViewModelProtocol! {
         didSet {
             viewModel.awakeFromNib()

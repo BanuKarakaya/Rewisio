@@ -17,6 +17,7 @@ final class DateCell: UICollectionViewCell {
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
         dateCollectionView.register(cellType: MiniDateCell.self)
+
     }
 }
 
