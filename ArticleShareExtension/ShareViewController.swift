@@ -40,13 +40,14 @@ final class ShareViewController: SLComposeServiceViewController {
                             let context = CoreDataStack.shared.context
                             
                             let article = ArticlesDemoEntity(context: context)
-                            article.articleUrl = url.absoluteString
-                            article.articleDate = sharedDate
-                            
                             
                             fetchTitle(from: url) { title in
                                 print("Makale başlığı:", title ?? "bulunamadı")
+                                article.articleName = title
                             }
+                            
+                            article.articleUrl = url.absoluteString
+                            article.articleDate = sharedDate
                             
                             do {
                                 try context.save()
@@ -55,9 +56,6 @@ final class ShareViewController: SLComposeServiceViewController {
                                 print("Failed to save Article: \(error.localizedDescription)")
                             }
                         }
-                        
-                        
-
                         self.closeExtension()
                     }
                     return
@@ -71,10 +69,6 @@ final class ShareViewController: SLComposeServiceViewController {
         provider.startFetchingMetadata(for: url) { metadata, error in
             if let title = metadata?.title {
                 completion(title)
-                let context = CoreDataStack.shared.context
-                
-                let article = ArticlesDemoEntity(context: context)
-                article.articleName = title
             } else {
                 completion(nil)
             }

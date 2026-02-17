@@ -57,7 +57,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: ArticleCell.self, indexPath: indexPath)
         let article = viewModel.articleAtIndex(index: indexPath.item)
-        let cellViewModel = ArticleCellViewModel(delegate: cell, article: article)
+        let cellViewModel = ArticleCellViewModel(delegate: cell, article: article, buttonTappedDelegate: self)
         cell.viewModel = cellViewModel
         return cell
     }
@@ -120,5 +120,11 @@ extension HomeViewController: HomeViewModelDelegate {
         articleCollectionView.dataSource = self
         articleCollectionView.register(cellType: ArticleCell.self)
         articleCollectionView.register(cellType: AddArticleCell.self)
+    }
+}
+
+extension HomeViewController: ArticleCellButtonTappedDelegate {
+    func articleCellButtonTapped(articleUrl: String) {
+        print("banu")
     }
 }

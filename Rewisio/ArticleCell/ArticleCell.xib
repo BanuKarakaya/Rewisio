@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkR-tC-9ap">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="85"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a" translatesAutoresizingMaskIntoConstraints="NO" id="1aM-JQ-D4Z">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b" translatesAutoresizingMaskIntoConstraints="NO" id="1aM-JQ-D4Z">
                                 <rect key="frame" x="12" y="18" width="48" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="1hm-sn-FP7"/>
@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Future of Artificial Intelligence" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfo-QY-AK0">
-                                <rect key="frame" x="68" y="18.000000000000004" width="198" height="38.333333333333343"/>
+                                <rect key="frame" x="68" y="18" width="198" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="YLP-wG-swf"/>
                                 </constraints>
@@ -68,6 +68,7 @@
                             <constraint firstAttribute="width" constant="360" id="9mS-zQ-v9g"/>
                             <constraint firstAttribute="bottom" secondItem="1aM-JQ-D4Z" secondAttribute="bottom" constant="18" id="RKt-7u-C5B"/>
                             <constraint firstItem="Rij-48-ndP" firstAttribute="top" secondItem="XkR-tC-9ap" secondAttribute="top" constant="18" id="U9H-dN-ZLV"/>
+                            <constraint firstAttribute="bottom" secondItem="Tfo-QY-AK0" secondAttribute="bottom" constant="18" id="YI0-2J-cNh"/>
                             <constraint firstAttribute="height" constant="85" id="beM-p8-dD9"/>
                             <constraint firstItem="1aM-JQ-D4Z" firstAttribute="leading" secondItem="XkR-tC-9ap" secondAttribute="leading" constant="12" id="fGA-gG-wQ6"/>
                             <constraint firstItem="Tfo-QY-AK0" firstAttribute="top" secondItem="XkR-tC-9ap" secondAttribute="top" constant="18" id="gcT-DO-HLc"/>
@@ -94,7 +95,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="a" width="163" height="116"/>
+        <image name="b" width="163" height="116"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

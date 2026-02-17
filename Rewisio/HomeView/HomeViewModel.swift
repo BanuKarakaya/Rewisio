@@ -43,6 +43,31 @@ final class HomeViewModel {
         }
         delegate?.reloadData()
     }
+    
+    func fetchArticlesForToday() {
+        let context = CoreDataStack.shared.context
+        let fetchRequest: NSFetchRequest<ArticlesDemoEntity> = ArticlesDemoEntity.fetchRequest()
+        
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: Date())
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        fetchRequest.predicate = NSPredicate(
+            format: "articleDate >= %@ AND articleDate < %@",
+            startOfDay as NSDate,
+            endOfDay as NSDate
+        )
+        
+        do {
+            articles = try context.fetch(fetchRequest)
+            print(articles)
+        } catch {
+            print("Failed to fetch articles: \(error)")
+        }
+        
+        delegate?.reloadData()
+    }
+
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
@@ -61,7 +86,7 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func viewDidLoad() {
         delegate?.prepareCollectionView()
-        fetchArticles()
+        fetchArticlesForToday()
         delegate?.prepareUI()
         
     }
