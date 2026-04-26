@@ -26,6 +26,7 @@ protocol HomeViewModelDelegate: AnyObject {
 final class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
     private var articles: [ArticlesDemoEntity] = []
+    var urls: [String] = []
     
     init(delegate: HomeViewModelDelegate?) {
         self.delegate = delegate
@@ -60,14 +61,15 @@ final class HomeViewModel {
         
         do {
             articles = try context.fetch(fetchRequest)
-            print(articles)
+            // URL'leri güvenli şekilde topla
+            urls = articles.compactMap { $0.articleUrl }.filter { !$0.isEmpty }
+            print("📚 Fetched \(articles.count) articles for today")
+            print("🔗 Collected URLs: \(urls)")
         } catch {
-            print("Failed to fetch articles: \(error)")
+            print("❌ Failed to fetch articles: \(error)")
         }
-        
         delegate?.reloadData()
     }
-
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
@@ -88,6 +90,5 @@ extension HomeViewModel: HomeViewModelProtocol {
         delegate?.prepareCollectionView()
         fetchArticlesForToday()
         delegate?.prepareUI()
-        
     }
 }

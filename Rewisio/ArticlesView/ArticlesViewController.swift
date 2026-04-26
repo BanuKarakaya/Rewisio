@@ -35,12 +35,15 @@ extension ArticlesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeCell(cellType: DateCell.self, indexPath: indexPath)
+            let cellViewModel = DateCellViewModel(delegate: cell, dateDelegate: viewModel as! DateCellDelegate, selectedDate: viewModel.selectedDate, dates: viewModel.datesArray)
+            cell.viewModel = cellViewModel
             return cell
         } else {
             let cell = collectionView.dequeCell(cellType: ArticleCell.self, indexPath: indexPath)
             let article = viewModel.articlesAtIndex(index: indexPath.item)
-            let cellViewModel = ArticleCellViewModel(delegate: cell, article: article)
+            let cellViewModel = ArticleCellViewModel(delegate: cell, article: article, buttonTappedDelegate: self)
             cell.viewModel = cellViewModel
+
             return cell
         }
     }
@@ -62,7 +65,7 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout {
 
 extension ArticlesViewController: ArticlesViewModelDelegate {
     func prepareUI() {
-        print("banu")
+        self.title = "Articles"
     }
     
     func prepareCollectionView() {
@@ -74,5 +77,15 @@ extension ArticlesViewController: ArticlesViewModelDelegate {
     
     func reloadData() {
         articlesCollectionView.reloadData()
+    }
+}
+
+extension ArticlesViewController: ArticleCellButtonTappedDelegate {
+    func articleCellButtonTapped(articleUrl: String) {
+        if let url = URL(string: articleUrl) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }

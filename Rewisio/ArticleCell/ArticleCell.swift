@@ -30,6 +30,10 @@ final class ArticleCell: UICollectionViewCell {
 extension ArticleCell: ArticleCellViewModelDelegate {
     func configureUI(article: SharedCore.ArticlesDemoEntity) {
         articleTitle.text = article.articleName
+        if let data = article.articleImage {
+            let image = UIImage(data: data)
+            articleImage.image = image
+        }
     }
     
     func prepareUI() {

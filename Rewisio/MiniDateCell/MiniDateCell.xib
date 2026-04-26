@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,35 +20,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="60" height="95"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VuQ-hL-5cQ">
-                                <rect key="frame" x="0.0" y="0.0" width="60" height="95"/>
+                                <rect key="frame" x="13" y="10" width="34" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsd-06-IDc">
-                                        <rect key="frame" x="20.666666666666664" y="0.0" width="18.666666666666664" height="31.666666666666668"/>
+                                        <rect key="frame" x="7.6666666666666661" y="0.0" width="18.666666666666671" height="25"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-yi-59E">
-                                        <rect key="frame" x="16.666666666666664" y="31.666666666666664" width="26.666666666666664" height="31.666666666666664"/>
+                                        <rect key="frame" x="3.6666666666666661" y="25" width="26.666666666666671" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.8156862855" green="0.81176471709999998" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BGN-PY-7rg">
-                                        <rect key="frame" x="20.666666666666668" y="64" width="19.000000000000004" height="30.666666666666657"/>
+                                        <rect key="frame" x="7.6666666666666679" y="50.666666666666664" width="19" height="23.999999999999993"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.3803921938" green="0.37254902719999999" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.38039215686274508" green="0.37254901960784315" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VuQ-hL-5cQ" secondAttribute="trailing" id="3fy-Px-Xac"/>
+                            <constraint firstAttribute="trailing" secondItem="VuQ-hL-5cQ" secondAttribute="trailing" constant="13" id="3fy-Px-Xac"/>
                             <constraint firstAttribute="width" constant="60" id="Z21-XD-A8G"/>
                             <constraint firstAttribute="height" constant="95" id="a9t-bB-rgA"/>
-                            <constraint firstItem="VuQ-hL-5cQ" firstAttribute="top" secondItem="cKo-85-jaI" secondAttribute="top" id="f19-hS-KhC"/>
-                            <constraint firstAttribute="bottom" secondItem="VuQ-hL-5cQ" secondAttribute="bottom" id="pH7-dt-XT7"/>
-                            <constraint firstItem="VuQ-hL-5cQ" firstAttribute="leading" secondItem="cKo-85-jaI" secondAttribute="leading" id="sw8-qX-ZXF"/>
+                            <constraint firstItem="VuQ-hL-5cQ" firstAttribute="top" secondItem="cKo-85-jaI" secondAttribute="top" constant="10" id="f19-hS-KhC"/>
+                            <constraint firstAttribute="bottom" secondItem="VuQ-hL-5cQ" secondAttribute="bottom" constant="10" id="pH7-dt-XT7"/>
+                            <constraint firstItem="VuQ-hL-5cQ" firstAttribute="leading" secondItem="cKo-85-jaI" secondAttribute="leading" constant="13" id="sw8-qX-ZXF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -61,7 +61,14 @@
                 <constraint firstAttribute="trailing" secondItem="cKo-85-jaI" secondAttribute="trailing" id="xUU-jA-neh"/>
             </constraints>
             <size key="customSize" width="60" height="95"/>
-            <point key="canvasLocation" x="198.47328244274809" y="59.507042253521128"/>
+            <connections>
+                <outlet property="dateString" destination="Xsd-06-IDc" id="SfE-er-wZQ"/>
+                <outlet property="dayString" destination="Shn-yi-59E" id="G5X-Se-JcN"/>
+                <outlet property="iconView" destination="BGN-PY-7rg" id="nNH-gX-OzQ"/>
+                <outlet property="mainView" destination="cKo-85-jaI" id="mGw-0w-cEq"/>
+                <outlet property="stackView" destination="VuQ-hL-5cQ" id="QFH-1w-HQb"/>
+            </connections>
+            <point key="canvasLocation" x="156" y="7"/>
         </collectionViewCell>
     </objects>
     <resources>

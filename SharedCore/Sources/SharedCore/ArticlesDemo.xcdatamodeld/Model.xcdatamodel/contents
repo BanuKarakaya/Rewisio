@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24512" systemVersion="25C56" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ArticlesDemoEntity" representedClassName="SharedCore.ArticlesDemoEntity" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="articleDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="articleImage" optional="YES" attributeType="Binary"/>
         <attribute name="articleName" optional="YES" attributeType="String"/>
         <attribute name="articleUrl" optional="YES" attributeType="String"/>
     </entity>

@@ -125,6 +125,10 @@ extension HomeViewController: HomeViewModelDelegate {
 
 extension HomeViewController: ArticleCellButtonTappedDelegate {
     func articleCellButtonTapped(articleUrl: String) {
-        print("banu")
+        if let url = URL(string: articleUrl) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ import LinkPresentation
 final class ShareViewController: SLComposeServiceViewController {
     
     let sharedDate = Date()
+    let group = DispatchGroup()
     
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -40,20 +41,34 @@ final class ShareViewController: SLComposeServiceViewController {
                             let context = CoreDataStack.shared.context
                             
                             let article = ArticlesDemoEntity(context: context)
-                            
-                            fetchTitle(from: url) { title in
-                                print("Makale başlığı:", title ?? "bulunamadı")
-                                article.articleName = title
-                            }
-                            
                             article.articleUrl = url.absoluteString
                             article.articleDate = sharedDate
                             
-                            do {
-                                try context.save()
-                                print("Article saved successfully!")
-                            } catch {
-                                print("Failed to save Article: \(error.localizedDescription)")
+                            group.enter()
+                            fetchTitle(from: url) { title in
+                                print("Makale başlığı:", title ?? "bulunamadı")
+                                article.articleName = title
+                                self.group.leave()
+                            }
+                            
+                            group.enter()
+                            fetchImage(from: url) { image in
+                                guard let image = image else { return }
+                                if let data = image.jpegData(compressionQuality: 0.8) {
+                                    article.articleImage = data
+                                    
+                                }
+                                self.group.leave()
+                            }
+                            
+                            group.notify(queue: .main) {
+                                print("Bütün işlemler bitti")
+                                do {
+                                    try context.save()
+                                    print("Article saved successfully!")
+                                } catch {
+                                    print("Failed to save Article: \(error.localizedDescription)")
+                                }
                             }
                         }
                         self.closeExtension()
@@ -75,10 +90,39 @@ final class ShareViewController: SLComposeServiceViewController {
         }
     }
     
+    func fetchImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        
+        let provider = LPMetadataProvider()
+        
+        provider.startFetchingMetadata(for: url) { metadata, error in
+            
+            guard let metadata = metadata else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            let imageProvider = metadata.imageProvider ?? metadata.iconProvider
+            
+            guard let itemProvider = imageProvider else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async {
+                    completion(image as? UIImage)
+                }
+            }
+        }
+    }
+    
     private func closeExtension() {
         DispatchQueue.main.async {
             self.extensionContext?.completeRequest(returningItems: nil)
         }
     }
-    
 }
