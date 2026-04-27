@@ -70,6 +70,48 @@ final class HomeViewModel {
         }
         delegate?.reloadData()
     }
+    
+    func fetchQuiz(urls: [URL], completion: @escaping ([QuizQuestion]) -> Void) {
+        let endpoint = "https://shrxdigxvqojyidfducj.functions.supabase.co/generate-questions"
+        
+        guard let url = URL(string: endpoint) else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body: [String: Any] = [
+            "urls": urls.map { $0.absoluteString }
+        ]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let error = error {
+                print("Network error:", error)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data")
+                return
+            }
+            
+            do {
+                let decoded = try JSONDecoder().decode(QuizResponse.self, from: data)
+                
+                DispatchQueue.main.async {
+                    completion(decoded.questions)
+                }
+                
+            } catch {
+                print("Decoding error:", error)
+                print(String(data: data, encoding: .utf8) ?? "")
+            }
+            
+        }.resume()
+    }
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
@@ -80,6 +122,15 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func updateCardActions() {
         delegate?.updateCardUI()
+        
+        let articleURLs = urls.compactMap { URL(string: $0) }
+        fetchQuiz(urls: articleURLs) { questions in
+            print("Quiz Questions:")
+            
+            questions.forEach { question in
+                print(question)
+            }
+        }
     }
     
     var articleCount: Int {

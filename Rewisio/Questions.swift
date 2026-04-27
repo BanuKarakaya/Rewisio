@@ -7,20 +7,19 @@
 
 import Foundation
 
-// MARK: - Question Model
-struct Question: Codable {
+struct QuizResponse: Codable {
+    let success: Bool
+    let count: Int
+    let questions: [QuizQuestion]
+}
+
+struct QuizQuestion: Codable, Identifiable {
+    let id = UUID()
     let question: String
     let options: [String]
     let answer: String
     let source_url: String
-}
-
-// MARK: - Response from Supabase Edge Function
-struct GenerateQuestionsResponse: Codable {
-    let status: Int?
-    let questions: [Question]?
-    let error: String?
-    let debug: String?
+    let source_type: String
 }
 
 
