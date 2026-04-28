@@ -72,44 +72,76 @@ final class HomeViewModel {
     }
     
     func fetchQuiz(urls: [URL], completion: @escaping ([QuizQuestion]) -> Void) {
+
         let endpoint = "https://shrxdigxvqojyidfducj.functions.supabase.co/generate-questions"
-        
-        guard let url = URL(string: endpoint) else { return }
-        
+
+        guard let url = URL(string: endpoint) else {
+            print("❌ Invalid endpoint URL")
+            return
+        }
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let body: [String: Any] = [
             "urls": urls.map { $0.absoluteString }
         ]
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-        
+
+        // 🔥 safer JSON encoding
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+            request.httpBody = jsonData
+
+            print("📤 Request body:", String(data: jsonData, encoding: .utf8) ?? "")
+
+        } catch {
+            print("❌ JSON encode error:", error)
+            return
+        }
+
         URLSession.shared.dataTask(with: request) { data, response, error in
-            
+
+            print("🚀 dataTask entered")
+
+            // ❌ Network error
             if let error = error {
-                print("Network error:", error)
+                print("❌ Network error:", error)
                 return
             }
-            
+
+            // 📡 HTTP status check (ÇOK ÖNEMLİ)
+            if let httpResponse = response as? HTTPURLResponse {
+                print("📡 Status code:", httpResponse.statusCode)
+            }
+
             guard let data = data else {
-                print("No data")
+                print("❌ No data received")
                 return
             }
-            
+
+            let raw = String(data: data, encoding: .utf8) ?? "nil"
+            print("📦 Raw response:", raw)
+
+            // ❌ empty response check
+            if raw.isEmpty {
+                print("❌ Empty response")
+                return
+            }
+
+            // 🔥 decode
             do {
                 let decoded = try JSONDecoder().decode(QuizResponse.self, from: data)
-                
+
                 DispatchQueue.main.async {
                     completion(decoded.questions)
                 }
-                
+
             } catch {
-                print("Decoding error:", error)
-                print(String(data: data, encoding: .utf8) ?? "")
+                print("❌ Decoding error:", error)
+                print("📦 Failed JSON:", raw)
             }
-            
+
         }.resume()
     }
 }
