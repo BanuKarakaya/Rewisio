@@ -212,14 +212,14 @@
                                                                     <backgroundConfiguration key="background">
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </backgroundConfiguration>
-                                                                    <color key="baseForegroundColor" red="1" green="0.43137254899999999" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="StartTestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1lV-k7-heg"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.91764705879999997" green="0.43529411759999997" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                         <constraints>
                                                             <constraint firstItem="Xw3-iv-PXR" firstAttribute="top" secondItem="fGH-qA-Hi8" secondAttribute="bottom" constant="15" id="0fr-Q3-kAJ"/>
                                                             <constraint firstItem="j9P-B0-qnO" firstAttribute="leading" secondItem="fGH-qA-Hi8" secondAttribute="trailing" constant="16" id="ELy-YX-XoU"/>
@@ -715,10 +715,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.0" green="0.75294117647058822" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

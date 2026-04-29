@@ -155,14 +155,14 @@ extension HomeViewModel: HomeViewModelProtocol {
     func updateCardActions() {
         delegate?.updateCardUI()
         
-        let articleURLs = urls.compactMap { URL(string: $0) }
-        fetchQuiz(urls: articleURLs) { questions in
-            print("Quiz Questions:")
+       // let articleURLs = urls.compactMap { URL(string: $0) }
+       // fetchQuiz(urls: articleURLs) { questions in
+         //   print("Quiz Questions:")
             
-            questions.forEach { question in
-                print(question)
-            }
-        }
+          //  questions.forEach { question in
+           //     print(question)
+          //  }
+       // }
     }
     
     var articleCount: Int {

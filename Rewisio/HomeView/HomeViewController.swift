@@ -84,9 +84,10 @@ extension HomeViewController: HomeViewModelDelegate {
         case .ganeratorQuiz:
             cardState = .startQuiz
             quizCardView.backgroundColor = UIColor.systemPurple
-            quizCardTitle.text = "Data Science Quiz"
+            quizCardTitle.text = "Quiz Ready"
             quizCardSubTitle.text = "15 Questions"
             startTestButton.setTitle("Start Test", for: .normal)
+            startTestButton.setTitleColor(UIColor.systemPurple, for: .normal)
             startTestButton.isEnabled = true
         case .startQuiz:
             cardState = .ganeratorQuiz
@@ -96,8 +97,8 @@ extension HomeViewController: HomeViewModelDelegate {
             quizCardTitle.text = "AI Quiz Generator"
             quizCardSubTitle.text = "From your saved articles"
             startTestButton.setTitle("Generate Quiz", for: .normal)
+            startTestButton.setTitleColor(UIColor.systemOrange, for: .normal)
             startTestButton.isEnabled = true
-            
         }
     }
     
