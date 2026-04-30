@@ -98,7 +98,7 @@ extension HomeViewController: HomeViewModelDelegate {
             quizCardSubTitle.text = "From your saved articles"
             startTestButton.setTitle("Generate Quiz", for: .normal)
             startTestButton.setTitleColor(UIColor.systemOrange, for: .normal)
-            startTestButton.isEnabled = true
+           // startTestButton.isEnabled = true
         }
     }
     
