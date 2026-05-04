@@ -13,6 +13,7 @@ struct Question {
 }
 
 protocol QuizViewModelProtocol {
+    var questionsArray: [Question] { get }
     func viewDidLoad()
     func updateView()
 }
@@ -32,6 +33,10 @@ final class QuizViewModel {
 }
 
 extension QuizViewModel: QuizViewModelProtocol {
+    var questionsArray: [Question] {
+        questions
+    }
+    
     func updateView() {
         delegate?.updateView()
     }

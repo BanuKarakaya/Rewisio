@@ -575,12 +575,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="answer1Label" destination="Uxb-xk-3Zj" id="HOU-kX-Mx4"/>
+                        <outlet property="answer2Label" destination="qXP-7R-2N1" id="JeI-sL-Uts"/>
+                        <outlet property="answer3Label" destination="jRs-jC-mgN" id="eAI-fh-0eY"/>
+                        <outlet property="answer4Label" destination="hLm-h4-y4A" id="zXc-wc-JnZ"/>
                         <outlet property="cornerView" destination="AEx-eb-tOR" id="bsA-vO-OuM"/>
                         <outlet property="nextButton" destination="ZGs-S2-law" id="3Z1-aG-qO2"/>
                         <outlet property="optionView1" destination="0S8-Gj-MsZ" id="TS1-E2-2q7"/>
                         <outlet property="optionView2" destination="JDD-xu-Zzq" id="9x9-VX-WzN"/>
                         <outlet property="optionView3" destination="doj-v0-QXL" id="9sd-gC-BFk"/>
                         <outlet property="optionView4" destination="NDk-lY-UUI" id="74O-V7-4eA"/>
+                        <outlet property="questionLabel" destination="FQr-NE-vwy" id="pgu-HR-IFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCl-Kx-nTQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
