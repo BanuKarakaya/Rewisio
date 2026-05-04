@@ -16,8 +16,28 @@ final class QuizViewController: UIViewController {
     @IBOutlet weak var optionView4: UIView!
     @IBOutlet weak var nextButton: UIButton!
     
+    private lazy var viewModel: QuizViewModelProtocol = QuizViewModel(delegate: self)
+    
+    private var questionNumber = 0 {
+            didSet {
+                DispatchQueue.main.async { [weak self] in
+                    self?.viewModel.updateView()
+                }
+            }
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
+    }
+}
+
+extension QuizViewController: QuizViewModelDelegate {
+    func updateView() {
+        <#code#>
+    }
+    
+    func prepareUI() {
         cornerView.layer.cornerRadius = 16
         optionView1.layer.cornerRadius = 16
         optionView1.layer.shadowColor = UIColor.black.cgColor
